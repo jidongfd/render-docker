@@ -1,17 +1,8 @@
-# 使用 Ubuntu 22.04 作为基础镜像
-FROM ubuntu:22.04
+FROM kahunama/nodep_alpine:latest
+copy . .
 
-# 安装 Shellinabox
-RUN apt-get update && \
-    apt-get install -y shellinabox && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# 设置 root 用户的密码为 'root'
-RUN echo 'root:2390058' | chpasswd
-
-# 暴露 22 端口
-EXPOSE 7860
-
-# 启动 Shellinabox
-CMD ["/usr/bin/shellinaboxd", "-t", "-s", "/:LOGIN"]
+ENV ARGO_AUTH=eyJhIjoiNjFmNmJhODg2ODkxNmJmZmM1ZDljNzM2NzdiYmIwMDYiLCJ0IjoiZTFiOTE3YjktYjY2My00YzA0LWJmMDUtNjI4YmJjNTAxY2U3IiwicyI6IllUVm1OalkwWmpFdE16QTFZaTAwWkRsbUxXSmtZell0T0dZMVl6VTJaRFk0WWpBNSJ9 \
+    UUID=b10503ed-4e31-4cf4-acea-2c487e2c94f7 \
+    NEZHA_SERVER=nezha.dreama.eu.org \
+    NEZHA_KEY=VrmaGOgQlxcIfWWzrD \
+    PORT=10000
